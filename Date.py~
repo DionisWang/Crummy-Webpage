@@ -1,0 +1,12 @@
+import re
+
+dates = []
+text = "Sept 21, 2014 Hello October 8, 1994"
+def findDates(s):
+    dates = re.findall(r"[A-Za-z]+ [0-90-9], [0-9]{4}",s)
+    print dates
+    return dates
+
+
+if __name__ == "__main__":
+    findDates(text)
