@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from google import search
-import reader
+import urllib2, reader
 
 app = Flask(__name__)
 
@@ -16,11 +16,12 @@ def home(question = None, results = None):
             return render_template("home.html", question = None, results = None)
         else:
             #if invalid question, return to homepage
-            if reader.interpret(search) == -1:
+            question_type = reader.interpret(search)
+            if question_type == -1:
                 return render_template("home.html", question = "error", results = None)
             #else send valid question and results to results page
             else:
-                links = search('inquiry', stop=10)
+                links = reader.getResults(inquiry, question_type)
                 return render_template("results.html", question = inquiry, results = links)
 
 #main
