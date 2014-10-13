@@ -1,1 +1,2 @@
 Dionis: Hello guys!
+JAson: date finder is done, we don't really need to check the two numbers, months are enough
