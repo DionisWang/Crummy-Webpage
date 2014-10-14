@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import urllib2, Date
+import urllib2, Date, Nameid
 
 ##bunch of methods needed for app.py
 
@@ -28,5 +28,5 @@ def getResults(inquiry, question_type):
         if question_type == 1:
             results.append(Date.findDates(txt))
         else:
-            pass
+            results.append(Nameid.run(txt))
     return results

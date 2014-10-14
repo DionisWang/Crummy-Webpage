@@ -3,3 +3,4 @@ JAson: date finder is done, we don't really need to check the two numbers, month
 Jerry: put your date finder, waiting for name finder and html pages 
 Dionis: Namefinder done. Input a string and it returns a list of names from  highest occurence to lowest occurence. Though finding the name is only as good as the dictionaries it has.
 Jerry: wat the hek am i supposed to run in namefinder
+Jerry: nvm i got it , html pls
