@@ -7,9 +7,10 @@ import urllib2, Date, Nameid
 
 #this interprets the user-input question
 def interpret(question):
-    if (question.find("who")>-1) or (question.find("Who")>-1):
+    question = str(question)
+    if ('who' in question) or ('Who' in question):
         return 0 #looking for a name
-    elif (question.find("when")>-1) or (question.find("When")>-1):
+    elif ('when' in question) or ('When' in question):
         return 1 #looking for a date
     else:
         return -1 #invalid question, back to homepage
@@ -18,7 +19,7 @@ def interpret(question):
 #convert webpages to text with beautifulsoup
 #run regexp on text
 def getResults(inquiry, question_type):
-    links = search(inquiry, stop=5)
+    links = search(inquiry, lang='en', stop=10)
     results = []
     for url in links:
         req = urllib2.Request(url)
@@ -29,16 +30,30 @@ def getResults(inquiry, question_type):
             soup = BeautifulSoup(webpagetext)
             if question_type == 1:
                 for date in Date.findDates(soup.get_text()):
-                    results.append(date)
+                    results.append(date.encode('ascii','ignore'))
             else:
                 for name in Nameid.run(soup.get_text()):
-                    results.append(name)
+                    results.append(name.encode('ascii','ignore'))
         except urllib2.HTTPError, e:
             pass
     return results
 
 #find mode of list
 
+#mode code taken from Christian Witts on stackoverflow
 def getMode(results):
     data = Counter(results)
-    return data.most_common(1)
+    return data.most_common(5)
+
+#mode code taken from lxop on stackoverflow
+#def getMode(results):
+#    counts = {}
+#    for item in results:
+#        counts [item] = counts.get (item, 0) + 1
+#    maxcount = 0
+#    maxitem = None
+#    for k, v in counts.items ():
+#        if v > maxcount:
+#            maxitem = k
+#            maxcount = v
+#    return maxitem
