@@ -65,11 +65,11 @@ def namefilter(d,index):
             if(i.split(" ")[0].lower() in name and i.split(" ")[-1].lower() in lastname):
                 temp[i]=d[i]
     return temp
-temp=open("testb.txt","r")
+
+temp=open("test.txt","r")
 r=temp.read()
 temp.close()
+
 def run(s):
     result=allnames(s)
     return sorted(result, key=result.get, reverse=True)
-for i in run(r):
-    print i
