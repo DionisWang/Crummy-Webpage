@@ -1,4 +1,4 @@
 Dionis: Hello guys!
 JAson: date finder is done, we don't really need to check the two numbers, months are enough
 Jerry: put your date finder, waiting for name finder and html pages 
-Dionis: Namefinder done. It returns the name with the top frequency with a string as an input. Though finding the name is only as good as the dictionaries it has.
+Dionis: Namefinder done. Input a string and it returns a list of names from  highest occurence to lowest occurence. Though finding the name is only as good as the dictionaries it has.
